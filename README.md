@@ -1,7 +1,22 @@
-# Tauri + React + Typescript
+# Pomodoro Timer App
 
-This template should help get you started developing with Tauri, React and Typescript in Vite.
+## Description
 
-## Recommended IDE Setup
+Simple pomodoro timer app as an introduction to Tauri, ChakraUI, and Typescript.
+React, Node, and ES6 were already known beforehand making it quite a simple introduction.
+Based off of a tutorial by LogRocket and expanded on to better understand Tauri, ChakraUI, and Typescript.
 
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+## Build instructions
+
+Run
+`npm run tauri build`
+`yarn tauri build`
+``cargo tauri build`
+to bundle the application.
+
+Or run `npm run tauri dev` to run a devleopment enviornment using tauri.
+
+## Credits
+
+Expanded on from:
+https://blog.logrocket.com/build-pomodoro-timer-tauri-using-react-and-vite/
