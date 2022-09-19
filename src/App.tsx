@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { Button, Flex, Text } from "@chakra-ui/react";
+import { sendNotification } from "@tauri-apps/api/notification";
+import { ask } from "@tauri-apps/api/dialog";
+
 import "./App.css";
 
 function App() {
@@ -24,13 +27,28 @@ function App() {
     setTimerStart(!timerStart);
   };
 
+  const triggerResetDialog = async () => {
+    let shouldReset = await ask("Do you want to reset the timer?", {
+      title: "Tauri Pomodoro App",
+      type: "warning",
+    });
+
+    if (shouldReset) {
+      setTime(900);
+      setTimerStart(false);
+    }
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (timerStart) {
         if (time > 0) {
           setTime(time - 1);
         } else if (time === 0) {
-          // Send notif to user
+          sendNotification({
+            title: "Time's Up!",
+            body: "🎉 Congrats! Hope you didn't get distracted!!! 🎉",
+          });
           clearInterval(interval);
         }
       }
@@ -65,7 +83,13 @@ function App() {
           >
             {!timerStart ? "Start" : "Pause"}
           </Button>
-          {/* TODO: Add Button to reset timer */}
+          <Button
+            background="blue.300"
+            marginX={5}
+            onClick={triggerResetDialog}
+          >
+            Reset
+          </Button>
         </Flex>
         <Flex marginTop={10}>
           {buttons.map(({ value, display }) => (
