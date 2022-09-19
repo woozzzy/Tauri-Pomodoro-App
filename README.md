@@ -11,7 +11,7 @@ Based off of a tutorial by LogRocket and expanded on to better understand Tauri,
 Run
 `npm run tauri build`
 `yarn tauri build`
-``cargo tauri build`
+`cargo tauri build`
 to bundle the application.
 
 Or run `npm run tauri dev` to run a devleopment enviornment using tauri.
